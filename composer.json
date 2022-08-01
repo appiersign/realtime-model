@@ -1,0 +1,22 @@
+{
+    "name": "appiersign/realtime-model",
+    "description": "This package enables syncing laravel models with Google Firestore",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Appiersign\\RealtimeModel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Solomon APPIER-SIGN",
+            "email": "braasig@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.4",
+        "laravel/framework": ">=8.21.0"
+    }
+}
