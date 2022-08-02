@@ -25,7 +25,7 @@ class SyncData extends Command
 
         $this->model = $this->model . $this->argument('model');
         
-        if (!class_exists($this->model)) throw new Exception($this->model) . ' does not exist!');
+        if (!class_exists($this->model)) throw new Exception($this->model . ' does not exist!');
 
         $this->model::query()->chunk(100, function ($models) {
             foreach ($models as $model) {
