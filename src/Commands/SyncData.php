@@ -11,7 +11,7 @@ class SyncData extends Command
 
     protected $description = 'Sync model data with Google Firestore';
     
-    private $model = 'App\Models\';
+    private $model = 'App\\Models\\';
 
     /**
      * @throws Exception
