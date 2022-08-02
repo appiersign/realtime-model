@@ -24,12 +24,13 @@ class SyncData extends Command
         if (env('API_GATEWAY_TOKEN') === null || !mb_strlen(env('API_GATEWAY_TOKEN'))) throw new Exception('API_GATEWAY_TOKEN param not set in .env');
 
         $this->model = $this->model . $this->argument('model');
+        
         if (!class_exists($this->model)) throw new Exception($this->model) . ' does not exist!');
 
         $this->model::query()->chunk(100, function ($models) {
             foreach ($models as $model) {
-                echo "Syncing {$this->model}: {$model->getSyncKey()}\n";
-                $model->syncData($model->getSyncKey());
+                echo "Syncing {$this->model}: {$model->{getSyncKey()}}\n";
+                $model->syncData($model->{getSyncKey()});
             };
         });
     }
