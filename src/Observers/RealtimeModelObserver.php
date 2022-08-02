@@ -7,14 +7,14 @@ class RealtimeModelObserver
     public function created($model): void
     {
         logger()->info("### Sync Created Data ###");
-        $model->syncData($model->external_id);
+        $model->syncData($model->{$model->getSyncKey()});
         $this->touchParents($model);
     }
 
     public function updated($model): void
     {
         logger()->info("### Sync Updated Data ###");
-        $model->syncData($model->external_id);
+        $model->syncData($model->{$model->getSyncKey()});
         $this->touchParents($model);
     }
 
@@ -22,7 +22,7 @@ class RealtimeModelObserver
     {
         if ($model->touchesParent()) {
             foreach ($model->parents() as $parent) {
-                $model->{$parent}->syncData($model->{$parent}->external_id);
+                $model->{$parent}->syncData($model->{$parent}->{$parent->getSyncKey()});
             }
         }
     }
