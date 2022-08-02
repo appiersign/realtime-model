@@ -2,7 +2,6 @@
 namespace AppierSign\RealtimeModel\Providers;
 
 use AppierSign\RealtimeModel\Commands\SyncData;
-use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\ServiceProvider;
 
 class RealtimeModelServiceProvider extends ServiceProvider
