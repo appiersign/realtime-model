@@ -29,8 +29,8 @@ class SyncData extends Command
 
         $this->model::query()->chunk(100, function ($models) {
             foreach ($models as $model) {
-                echo "Syncing {$this->model}: {$model->{getSyncKey()}}\n";
-                $model->syncData($model->{getSyncKey()});
+                echo "Syncing {$this->model}: {$model->{$model->getSyncKey()}}\n";
+                $model->syncData($model->{$model->getSyncKey()});
             };
         });
     }
