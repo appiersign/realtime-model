@@ -10,6 +10,8 @@ class SyncData extends Command
     protected $signature = 'realtime:sync {model}';
 
     protected $description = 'Sync model data with Google Firestore';
+    
+    private $model = 'App\\Models\\';
 
     /**
      * @throws Exception
@@ -21,14 +23,14 @@ class SyncData extends Command
         if (env('APP_NAME') === null || !mb_strlen(env('APP_NAME'))) throw new Exception('APP_NAME param not set in .env');
         if (env('API_GATEWAY_TOKEN') === null || !mb_strlen(env('API_GATEWAY_TOKEN'))) throw new Exception('API_GATEWAY_TOKEN param not set in .env');
 
-        if (!class_exists($this->argument('model'))) throw new Exception($this->argument('model') . ' does not exist!');
+        $this->model = $this->model . $this->argument('model');
+        
+        if (!class_exists($this->model)) throw new Exception($this->model . ' does not exist!');
 
-        $class = $this->argument('model');
-
-        $this->argument('model')::query()->chunk(100, function ($models) use ($class) {
+        $this->model::query()->chunk(100, function ($models) {
             foreach ($models as $model) {
-                echo "Syncing {$class}: {$class}\n";
-                $model->syncData($model->getSyncKey());
+                echo "Syncing {$this->model}: {$model->{$model->getSyncKey()}}\n";
+                $model->syncData($model->{$model->getSyncKey()});
             };
         });
     }
