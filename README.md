@@ -2,8 +2,18 @@
 This package enables you to sync laravel models with Google Cloud Firestore. This packages works with an internally
 developed API that uses the gprc PHP extension to seamlessly connect your PHP backend to Firestore.
 
-## Installation
+### Installation
 `composer require appiersign/realtime-model`
+
+### Set Up
+
+Set these params in your .env file:
+```
+    ...
+    FIRESTORE_SERVER_URI=
+    API_GATEWAY_TOKEN=
+    ...
+```
 
 ### Configuration
 Add the realtime model service provider 'providers' array in your `config/app.php` file.
