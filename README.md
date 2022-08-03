@@ -22,6 +22,12 @@ Add `"AppierSign\\RealtimeModel\\": "vendor/appiersign/realtime-model/src"` to t
 To automatically sync data to firestore, just add the `RealtimeModel` trait to the desired model.
 This will automatically sync all model attributes to Firestore whenever a new model is created or updated.
 
+You can also use the realtime artisan command to sync all data associated with a model:
+
+```
+    php artisan realtime:sync User
+```
+
 To define which fields or attributes to sync, define the `toRealtimeData()` public method 
 on the model like this:
 
