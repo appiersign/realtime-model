@@ -24,8 +24,6 @@ class FirestoreService
             logger()->info("### Request Body ###");
             logger()->info(json_encode($requestBody));
 
-            sleep(2);
-
             $request = Http::withToken(env('API_GATEWAY_TOKEN'))->post($uri, $requestBody);
 
             logger()->info("### Firestore Response Body: " . json_encode($request->json()) . " ###");
