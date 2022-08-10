@@ -25,7 +25,7 @@ trait RealtimeModel
 
     public function syncData(string $key): void
     {
-        FirestoreJob::dispatch($this->collection(), $key, $this)->afterResponse();
+        FirestoreJob::dispatch($this->collection(), $key, $this);
     }
 
     public function getSyncKey(): string
